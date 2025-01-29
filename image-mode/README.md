@@ -30,6 +30,7 @@ This will build and push the bootc image, then build and run the bootc VM (~6min
 
 - Paste the following commands all at once in **Terminal** tab
 ```
+reglogin
 podman build -t rhel.$INSTRUQT_PARTICIPANT_ID.instruqt.io:5000/test-bootc -f Containerfile
 podman push rhel.$INSTRUQT_PARTICIPANT_ID.instruqt.io:5000/test-bootc
 
@@ -43,7 +44,7 @@ podman run --rm --privileged \
 
 cp qcow2/disk.qcow2 /var/lib/libvirt/images/bootc-vm.qcow2
 
-virt-install --name bootc \
+virt-install --name bootc-vm \
  --disk /var/lib/libvirt/images/bootc-vm.qcow2 \
 --import \
 --memory 2048 \
@@ -52,7 +53,7 @@ virt-install --name bootc \
 --noautoconsole \
 --noreboot
 
-virsh start bootc
+virsh start bootc-vm
 ```
 
 ### Step 3
@@ -74,7 +75,7 @@ At this point you have a working bootc VM and you may modify the bootc image as 
 - Use the **Containerfile** tab to edit the image file
 - Use the **VM Console** tab for bootc commands - Credentials : core/redhat
 
-Demo scenarii are offered below to showcase bootc features and value, but you can design your own.
+Demo scenarios are offered below to showcase bootc features and value, but you can design your own.
 
 ### 1. Bootc merges local configuration
 
@@ -116,7 +117,7 @@ sleep 90 && pkill telnet & telnet towel.blinkenlights.nl
 ```
 Tab **Terminal** : Reboot the VM if you cannot exit the movie
 ```
-virsh reboot bootc
+virsh reboot bootc-vm
 ```
 </details>
 
