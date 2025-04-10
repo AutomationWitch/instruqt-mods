@@ -36,7 +36,7 @@ It's ready !
 
 ## Demo
 
-Now close the instruction pane on the right with the **>** icon on top.
+Now close the instructions pane on the right with the **Hide Instructions** button at the top.
 
 Give a tour of the Satellite
 Examples :
