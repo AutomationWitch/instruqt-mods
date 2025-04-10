@@ -30,7 +30,7 @@ ssh -o Stricthostkeychecking=no rhel1 dnf history undo 12 --allowerasing -y &
 
 ssh -o Stricthostkeychecking=no rhel2 wget https://satellite.lab/pub/katello-ca-consumer-latest.noarch.rpm --no-check-certificate
 ssh -o Stricthostkeychecking=no rhel2 dnf install katello-ca-consumer-latest.noarch.rpm -y
-ssh -o Stricthostkeychecking=no rhel2 dnf history undo 12 --allowerasing -y &
+ssh -o Stricthostkeychecking=no rhel2 dnf history undo 12 --allowerasing -y
 
 # Content 2/2
 hammer content-view publish --organization Demo --lifecycle-environments Dev,Prod --name RHEL9
