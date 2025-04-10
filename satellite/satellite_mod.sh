@@ -41,6 +41,8 @@ hammer content-view publish --organization Demo --lifecycle-environments Dev,Pro
 
 hammer activation-key create --organization Demo --content-view RHEL9 --lifecycle-environment Dev --name RHEL9_Dev
 hammer activation-key create --organization Demo --content-view RHEL9 --lifecycle-environment Prod --name RHEL9_Prod
+hammer activation-key content-override --id 1 --content-label satellite-client-6-for-rhel-9-x86_64-rpms --override-name enabled --value 1
+hammer activation-key content-override --id 2 --content-label satellite-client-6-for-rhel-9-x86_64-rpms --override-name enabled --value 1
 
 # Hosts registration
 ssh -o Stricthostkeychecking=no rhel1 subscription-manager register --org Acme_Org --activationkey RHEL9_Dev
