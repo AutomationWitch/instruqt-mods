@@ -4,7 +4,7 @@ hammer location update --id 2 --name $CITY
 
 # Content 1/2
 hammer content-view create --organization Demo --name OS --repository-ids 4
-hammer content-view create --organization Demo --name Apps --repository-ids 3
+hammer content-view create --organization Demo --name Apps --repository-ids 3,8
 
 hammer content-view create --organization Demo --name RHEL9 --composite --auto-publish true
 hammer content-view component add --organization Demo --composite-content-view RHEL9 --latest --component-content-view OS
