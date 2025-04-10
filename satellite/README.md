@@ -1,0 +1,47 @@
+# Satellite Overview
+
+## Instruqt Track
+
+Access the lab at [https://www.redhat.com/en/satellite-basics-lab](https://www.redhat.com/en/satellite-basics-lab)
+
+This lab provides :
+- A Satellite server with pre-synced content
+- 2 RHEL 9 clients
+
+Time limit : 2 hours
+
+## Preparation
+
+Follow these instructions to make the Satellite look like it's Day 2.
+
+Expect around XXmin of total prep.
+
+<details open>
+        
+### Step 1
+
+- Click **Launch** on the bottom right, expect 3min of provisioning.
+- Click **Start** on the bottom right when it appears.
+
+### Step 2
+
+- Paste the following commands all at once in **Terminal** tab
+```
+
+
+```
+
+It's ready !
+
+</details>
+
+## Demo
+
+Now close the instruction pane on the right with the **>** icon on top.
+
+Give a tour of the Satellite
+Examples :
+- Content promotion
+- Remote execution with Ansible
+- Web Console integration
+- Compliance reports
