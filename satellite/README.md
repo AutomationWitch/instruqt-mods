@@ -25,7 +25,7 @@ Expect around XXmin of total prep.
 
 ### Step 2
 
-- Paste the following commands all at once in **Terminal** tab (you can change the city)
+- Paste the following commands all at once in **Terminal** tab (you can change the CITY)
 ```
 CITY=Paris bash <(curl -sSL https://raw.githubusercontent.com/AutomationWitch/instruqt-mods/refs/heads/main/satellite/satellite_mod.sh)
 ```
