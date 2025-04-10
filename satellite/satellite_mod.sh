@@ -25,6 +25,7 @@ ssh-copy-id -o Stricthostkeychecking=no -i ~foreman-proxy/.ssh/id_rsa_foreman_pr
 
 ssh -o Stricthostkeychecking=no rhel1 wget https://satellite.lab/pub/katello-ca-consumer-latest.noarch.rpm --no-check-certificate
 ssh -o Stricthostkeychecking=no rhel1 dnf install katello-ca-consumer-latest.noarch.rpm -y
+ssh -o Stricthostkeychecking=no rhel1 dnf history undo 12 --allowerasing -y &
 
 ssh -o Stricthostkeychecking=no rhel2 wget https://satellite.lab/pub/katello-ca-consumer-latest.noarch.rpm --no-check-certificate
 ssh -o Stricthostkeychecking=no rhel2 dnf install katello-ca-consumer-latest.noarch.rpm -y
