@@ -1,4 +1,4 @@
-# Satellite Overview
+# Satellite Day 2 Overview
 
 ## Instruqt Track
 
