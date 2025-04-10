@@ -14,7 +14,7 @@ Time limit : 2 hours
 
 Follow these instructions to make the Satellite look like it's Day 2.
 
-Expect around XXmin of total prep.
+Expect around 8min of total prep.
 
 <details open>
         
@@ -25,7 +25,7 @@ Expect around XXmin of total prep.
 
 ### Step 2
 
-- Paste the following commands all at once in **Terminal** tab (you can change the CITY)
+- Paste the following command in the **Terminal** tab (you can change the CITY)
 ```
 CITY=Paris bash <(curl -sSL https://raw.githubusercontent.com/AutomationWitch/instruqt-mods/refs/heads/main/satellite/satellite_mod.sh)
 ```
