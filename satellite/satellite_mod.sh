@@ -50,4 +50,6 @@ ssh -o Stricthostkeychecking=no rhel2 subscription-manager register --org Acme_O
 hammer scap-content bulk-upload --type default
 hammer policy create --organization Demo --deploy-by ansible --name "Hardening Baseline" --scap-content-id 1 --scap-content-profile-id 9 --period weekly --weekday saturday
 
-hammer hostgroup create --name Red --ansible-role-ids 1,5,62  --openscap-proxy-id 1
+hammer hostgroup create --name Red --ansible-role-ids 1,5,62 --openscap-proxy-id 1
+hammer host update --hostgroup Red --name rhel1
+hammer host update --hostgroup Red --name rhel2
