@@ -1,6 +1,6 @@
 # Cosmetic changes
 hammer organization update --id 1 --name Demo
-hammer location update --id 2 --name Paris
+hammer location update --id 2 --name $CITY
 
 # Content 1/2
 hammer content-view create --organization Demo --name OS --repository-ids 4
@@ -28,9 +28,7 @@ ssh -o Stricthostkeychecking=no rhel1 dnf install katello-ca-consumer-latest.noa
 
 ssh -o Stricthostkeychecking=no rhel2 wget https://satellite.lab/pub/katello-ca-consumer-latest.noarch.rpm --no-check-certificate
 ssh -o Stricthostkeychecking=no rhel2 dnf install katello-ca-consumer-latest.noarch.rpm -y
-
-# Compliance
-hammer scap-content bulk-upload --type default
+ssh -o Stricthostkeychecking=no rhel2 dnf history undo 12 --allowerasing -y &
 
 # Content 2/2
 hammer content-view publish --organization Demo --lifecycle-environments Dev,Prod --name RHEL9
@@ -41,3 +39,7 @@ hammer activation-key create --organization Demo --content-view RHEL9 --lifecycl
 # Hosts registration
 ssh -o Stricthostkeychecking=no rhel1 subscription-manager register --org Acme_Org --activationkey RHEL9_Dev
 ssh -o Stricthostkeychecking=no rhel2 subscription-manager register --org Acme_Org --activationkey RHEL9_Prod
+
+# Compliance
+hammer scap-content bulk-upload --type default
+hammer policy create --organization Demo --deploy-by ansible --name "Hardening Baseline" --scap-content-id 1 --scap-content-profile-id 9 --period weekly --weekday saturday
