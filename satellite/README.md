@@ -39,6 +39,7 @@ It's ready !
 Now close the instructions pane on the right with the **Hide Instructions** button at the top.
 
 Give a tour of the Satellite
+
 Examples :
 - Content promotion
 - Remote execution with Ansible
