@@ -53,3 +53,6 @@ hammer policy create --organization Demo --deploy-by ansible --name "Hardening B
 hammer hostgroup create --name Red --ansible-role-ids 1,5,62 --openscap-proxy-id 1
 hammer host update --hostgroup Red --name rhel1
 hammer host update --hostgroup Red --name rhel2
+
+hammer job-invocation create --job-template-id 227 --search-query rhel1
+hammer job-invocation create --job-template-id 227 --search-query rhel2
