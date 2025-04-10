@@ -26,11 +26,9 @@ ssh-copy-id -o Stricthostkeychecking=no -i ~foreman-proxy/.ssh/id_rsa_foreman_pr
 
 ssh -o Stricthostkeychecking=no rhel1 wget https://satellite.lab/pub/katello-ca-consumer-latest.noarch.rpm --no-check-certificate
 ssh -o Stricthostkeychecking=no rhel1 dnf install katello-ca-consumer-latest.noarch.rpm -y
-ssh -o Stricthostkeychecking=no rhel1 dnf history undo 12 --allowerasing -y &
 
 ssh -o Stricthostkeychecking=no rhel2 wget https://satellite.lab/pub/katello-ca-consumer-latest.noarch.rpm --no-check-certificate
 ssh -o Stricthostkeychecking=no rhel2 dnf install katello-ca-consumer-latest.noarch.rpm -y
-ssh -o Stricthostkeychecking=no rhel2 dnf history undo 12 --allowerasing -y
 
 # Content 2/2
 hammer content-view publish --organization Demo --lifecycle-environments Dev,Prod --name RHEL9
@@ -43,6 +41,8 @@ hammer activation-key content-override --id 2 --content-label satellite-client-6
 # Hosts registration
 ssh -o Stricthostkeychecking=no rhel1 subscription-manager register --org Acme_Org --activationkey RHEL9_Dev
 ssh -o Stricthostkeychecking=no rhel2 subscription-manager register --org Acme_Org --activationkey RHEL9_Prod
+ssh -o Stricthostkeychecking=no rhel1 dnf history undo 12 --allowerasing -y 1>/dev/null &
+ssh -o Stricthostkeychecking=no rhel2 dnf history undo 12 --allowerasing -y
 
 # Compliance
 hammer scap-content bulk-upload --type default
