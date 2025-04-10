@@ -16,12 +16,8 @@ hammer content-view component add --organization Demo --composite-content-view R
 hammer content-view component add --organization Demo --composite-content-view RHEL9 --latest --component-content-view Apps
 hammer content-view component add --organization Demo --composite-content-view RHEL9 --latest --component-content-view Tools
 
-hammer content-view publish --organization Demo --name OS --lifecycle-environments Dev,Prod
-hammer content-view publish --organization Demo --name Apps --lifecycle-environments Dev,Prod
-hammer content-view publish --organization Demo --name Tools --lifecycle-environments Dev,Prod
-
-hammer content-view publish --organization Demo --lifecycle-environments Dev,Prod --name OS
-hammer content-view publish --organization Demo --lifecycle-environments Dev,Prod --name Apps
+hammer content-view publish --organization Demo --lifecycle-environments Dev,Prod --name OS &
+hammer content-view publish --organization Demo --lifecycle-environments Dev,Prod --name Apps &
 hammer content-view publish --organization Demo --lifecycle-environments Dev,Prod --name Tools
 
 # Hosts configuration
@@ -50,11 +46,11 @@ ssh -o Stricthostkeychecking=no rhel2 subscription-manager register --org Acme_O
 
 # Compliance
 hammer scap-content bulk-upload --type default
-hammer policy create --organization Demo --deploy-by ansible --name "Hardening Baseline" --scap-content-id 1 --scap-content-profile-id 9 --period weekly --weekday saturday
+hammer policy create --organization Demo --deploy-by ansible --name "Hardening Baseline" --scap-content-id 1 --scap-content-profile-id 9 --period weekly --weekday saturday &
 
 hammer hostgroup create --name Red --ansible-role-ids 1,5,62 --openscap-proxy-id 1
 hammer host update --hostgroup Red --name rhel1
 hammer host update --hostgroup Red --name rhel2
 
-hammer job-invocation create --job-template-id 227 --search-query rhel1
+hammer job-invocation create --job-template-id 227 --search-query rhel1 &
 hammer job-invocation create --job-template-id 227 --search-query rhel2
