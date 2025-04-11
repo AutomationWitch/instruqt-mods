@@ -14,7 +14,7 @@ Time limit : 2 hours
 
 Follow these instructions to make the Satellite look like it's Day 2.
 
-Expect around 8min of total prep.
+Expect around 10min of total prep.
 
 <details open>
         
