@@ -16,8 +16,8 @@ hammer content-view component add --organization Demo --composite-content-view R
 hammer content-view component add --organization Demo --composite-content-view RHEL9 --latest --component-content-view Apps
 hammer content-view component add --organization Demo --composite-content-view RHEL9 --latest --component-content-view Tools
 
-hammer content-view publish --organization Demo --lifecycle-environments Dev,Prod --name OS &
-hammer content-view publish --organization Demo --lifecycle-environments Dev,Prod --name Apps &
+hammer content-view publish --organization Demo --lifecycle-environments Dev,Prod --name OS
+hammer content-view publish --organization Demo --lifecycle-environments Dev,Prod --name Apps
 hammer content-view publish --organization Demo --lifecycle-environments Dev,Prod --name Tools
 
 # Hosts configuration
