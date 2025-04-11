@@ -45,10 +45,11 @@ ssh -o Stricthostkeychecking=no rhel1 dnf history undo 12 --allowerasing -y 1>/d
 ssh -o Stricthostkeychecking=no rhel2 dnf history undo 12 --allowerasing -y
 
 # Compliance
-hammer scap-content bulk-upload --type default
-hammer policy create --organization Demo --deploy-by ansible --name "Hardening Baseline" --scap-content-id 1 --scap-content-profile-id 9 --period weekly --weekday saturday
-
 hammer hostgroup create --name Red --ansible-role-ids 1,5,62 --openscap-proxy-id 1
+
+hammer scap-content bulk-upload --type default
+hammer policy create --organization Demo --deploy-by ansible --name "Hardening Baseline" --scap-content-id 1 --scap-content-profile-id 9 --period weekly --weekday saturday --hostgroups Red
+
 hammer host update --hostgroup Red --name rhel1
 hammer host update --hostgroup Red --name rhel2
 
