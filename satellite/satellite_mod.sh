@@ -54,4 +54,10 @@ hammer host update --hostgroup Red --name rhel1
 hammer host update --hostgroup Red --name rhel2
 
 hammer job-invocation create --job-template-id 227 --search-query 'id ^ (2,3)'
-hammer job-invocation create --job-template-id 197 --search-query 'id ^ (2,3)'
+hammer job-invocation create --job-template-id 197 --search-query 'id ^ (2,3)' &
+
+# EPEL
+hammer product create --organization Demo --name "Extra packages for Enterprise Linux"
+hammer repository create --organization Demo --content-type yum --name "Extra Packages for Enterprise Linux 9 x86_64" --product "Extra packages for Enterprise Linux" --url "https://m
+irror.in2p3.fr/pub/epel/9/Everything/x86_64/"
+hammer repository synchronize --organization Demo --name "Extra Packages for Enterprise Linux 9 x86_64" --product "Extra packages for Enterprise Linux"
