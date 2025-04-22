@@ -42,8 +42,11 @@ Give a tour of the Satellite
 
 Examples :
 - Content promotion
-- Remote execution with Ansible
-- Web Console integration
+- Remote execution
+- System roles configuration with Ansible
 - Compliance reports
 
 Wants to show hammer CLI samples ? Show the commands used for this mod [here](https://github.com/AutomationWitch/instruqt-mods/blob/main/satellite/satellite_mod.sh)
+
+Backlog :
+- Web Console integration
