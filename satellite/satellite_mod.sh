@@ -10,7 +10,7 @@ hammer content-view create --organization Demo --name RHEL9 --composite --auto-p
 
 hammer content-view create --organization Demo --name OS --repository-ids 4
 hammer content-view create --organization Demo --name Apps --repository-ids 3
-hammer content-view create --organization Demo --name Tools --repository-ids 8
+hammer content-view create --organization Demo --name Tools --repository-ids 6
 
 hammer content-view component add --organization Demo --composite-content-view RHEL9 --latest --component-content-view OS
 hammer content-view component add --organization Demo --composite-content-view RHEL9 --latest --component-content-view Apps
