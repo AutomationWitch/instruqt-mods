@@ -44,17 +44,22 @@ ssh -o Stricthostkeychecking=no rhel2 subscription-manager register --org Acme_O
 # ssh -o Stricthostkeychecking=no rhel1 dnf history undo 12 --allowerasing -y 1>/dev/null &
 # ssh -o Stricthostkeychecking=no rhel2 dnf history undo 12 --allowerasing -y
 
-# Compliance - Broken in 6.17
-#hammer hostgroup create --name Red --ansible-role-ids 1,5,62 --openscap-proxy-id 1
+# Compliance
+hammer ansible roles sync --proxy-id 1 --role-names theforeman.foreman_scap_client
+## Assign cockpit and scap roles
+hammer hostgroup create --name Red --openscap-proxy-id 1 --ansible-role-ids 2,6
 
-#hammer scap-content bulk-upload --type default
-#hammer policy create --organization Demo --deploy-by ansible --name "Hardening Baseline" --scap-content-id 1 --scap-content-profile-id 9 --period weekly --weekday saturday --hostgroups Red
+hammer scap-content bulk-upload --type default
+hammer policy create --organization Demo --deploy-by ansible --name "Hardening Baseline" --scap-content-id 1 --scap-content-profile-id 9 --period weekly --weekday saturday --hostgroups Red
 
-#hammer host update --hostgroup Red --name rhel1
-#hammer host update --hostgroup Red --name rhel2
+hammer host update --hostgroup Red --name rhel1
+hammer host update --hostgroup Red --name rhel2
 
-#hammer job-invocation create --job-template-id 227 --search-query 'id ^ (2,3)'
-#hammer job-invocation create --job-template-id 197 --search-query 'id ^ (2,3)' &
+
+## Run Ansible roles
+hammer job-invocation create --job-template-id 235 --search-query 'id ^ (2,3)'
+## Run OpenSCAP scan
+hammer job-invocation create --job-template-id 248 --search-query 'id ^ (2,3)' &
 
 # EPEL
 hammer product create --organization Demo --name "Extra packages for Enterprise Linux"
