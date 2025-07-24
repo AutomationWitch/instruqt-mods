@@ -14,7 +14,7 @@ Time limit : 2 hours
 
 Follow these instructions to make the Satellite look like it's Day 2.
 
-Expect around 10min of total prep.
+Expect around 20min of total prep, but demo can start after 5min.
 
 <details open>
         
