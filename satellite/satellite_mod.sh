@@ -50,7 +50,7 @@ hammer ansible roles sync --proxy-id 1 --role-names theforeman.foreman_scap_clie
 hammer hostgroup create --name Red --openscap-proxy-id 1 --ansible-role-ids 2,6
 
 hammer scap-content bulk-upload --type default
-hammer policy create --organization Demo --deploy-by ansible --name "Hardening Baseline" --scap-content-id 1 --scap-content-profile-id 9 --period weekly --weekday saturday --hostgroups Red
+hammer policy create --organization Demo --deploy-by ansible --name "Hardening Baseline" --scap-content-id 4 --scap-content-profile-id 58 --period weekly --weekday saturday --hostgroups Red
 
 hammer host update --hostgroup Red --name rhel1
 hammer host update --hostgroup Red --name rhel2
