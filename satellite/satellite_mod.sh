@@ -41,8 +41,8 @@ hammer activation-key content-override --id 2 --content-label satellite-client-6
 # Hosts registration
 ssh -o Stricthostkeychecking=no rhel1 subscription-manager register --org Acme_Org --activationkey RHEL9_Dev
 ssh -o Stricthostkeychecking=no rhel2 subscription-manager register --org Acme_Org --activationkey RHEL9_Prod
-ssh -o Stricthostkeychecking=no rhel1 dnf history undo 12 --allowerasing -y 1>/dev/null &
-ssh -o Stricthostkeychecking=no rhel2 dnf history undo 12 --allowerasing -y
+# ssh -o Stricthostkeychecking=no rhel1 dnf history undo 12 --allowerasing -y 1>/dev/null &
+# ssh -o Stricthostkeychecking=no rhel2 dnf history undo 12 --allowerasing -y
 
 # Compliance - Broken in 6.17
 #hammer hostgroup create --name Red --ansible-role-ids 1,5,62 --openscap-proxy-id 1
