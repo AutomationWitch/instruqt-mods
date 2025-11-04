@@ -59,11 +59,12 @@ hammer host update --hostgroup Red --name rhel2
 ## Run Ansible roles
 hammer job-invocation create --job-template-id 235 --search-query 'id ^ (2,3)'
 ## Run OpenSCAP scan
-hammer job-invocation create --job-template-id 248 --search-query 'id ^ (2,3)' &
+hammer job-invocation create --job-template-id 248 --search-query 'id ^ (2)' &
 
 # EPEL
 hammer product create --organization Demo --name "Extra packages for Enterprise Linux"
 hammer repository create --organization Demo --content-type yum --name "Extra Packages for Enterprise Linux 9 x86_64" --product "Extra packages for Enterprise Linux" --url "https://mirror.in2p3.fr/pub/epel/9/Everything/x86_64/"
 hammer repository synchronize --organization Demo --name "Extra Packages for Enterprise Linux 9 x86_64" --product "Extra packages for Enterprise Linux"
-hammer content-view create --organization Demo --name EPEL --repository-ids 78
+EPEL_ID=$(hammer repository list --organization Demo | grep 'Extra Packages' | awk {'print $1}')
+hammer content-view create --organization Demo --name EPEL --repository-ids $EPEL_ID
 hammer content-view publish --organization Demo --lifecycle-environments Dev,Prod --name EPEL
